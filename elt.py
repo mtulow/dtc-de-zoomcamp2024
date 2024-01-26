@@ -78,6 +78,10 @@ def upload_to_postgres(df: pd.DataFrame, table_name: str, schema: str):
     # Connect to database
     with engine.connect() as con:
 
+        # Create schema if it doesn't exist
+        logging.info('Creating schema: %s', schema)
+        con.execute(f'CREATE SCHEMA IF NOT EXISTS {schema};').fetchall()
+
         # Upload dataset to database
         logging.info('Uploading to `ny_taxi` database')
         df.to_sql(name=table_name, con=con, schema=schema,

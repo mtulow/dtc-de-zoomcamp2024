@@ -38,7 +38,7 @@ docker build -t elt:v001 .
 
 # 
 # Run the ELT pipeline
-docker run -it --network=pg-network elt:v001 -t=yellow -y=2019 -m=9
+docker run -it --network=pg-network elt:v001 -t=green -y=2019 -m=9
 
 # OR
 
