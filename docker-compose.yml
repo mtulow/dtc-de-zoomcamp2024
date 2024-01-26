@@ -1,0 +1,39 @@
+services:
+
+  # elt:
+  #   build: ./pipeline
+  #   ports: 
+  #     - "8000:8000"
+  #   volumes:
+  #     - "./pipeline:/home/app/pipeline"
+  #   build:
+  #     - 
+
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    env_file:
+      - .env
+    volumes:
+      - "./data/db:/var/lib/postgresql/data:rw"
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./data/pgadmin-data:/var/lib/pgadmin
+    ports:
+      - "8080:80"
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: pg-network

@@ -1,0 +1,9 @@
+fsspec
+pandas
+pyarrow
+fastparquet
+python-dotenv
+sqlalchemy
+psycopg2-binary
+google-cloud-storage
+google-cloud-bigquery
