@@ -86,7 +86,7 @@ def upload_to_postgres(df: pd.DataFrame, table_name: str, schema: str):
         logging.info('Uploading to `ny_taxi` database')
         df.to_sql(name=table_name, con=con, schema=schema,
                   index=False, chunksize=100_000,
-                  if_exists='append', method='multi')
+                  if_exists='replace', method='multi')
         logging.info('Upload complete')
 
     # Dispose of engine connection
