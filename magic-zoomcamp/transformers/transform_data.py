@@ -40,26 +40,25 @@ def transform(data, *args, **kwargs):
     col_mapper = {col: camel_to_snake(col)for col in data.columns}
     col_mapper['lpep_pickup_datetime'] = 'pickup_datetime'
     col_mapper['lpep_dropoff_datetime'] = 'dropoff_datetime'
-
     
     # Rename columns
     data.rename(columns=col_mapper, inplace=True)
 
-    data.insert(
-        list(data.columns).index('pickup_datetime'),
-        'pickup_date',
-        data['pickup_datetime'].dt.date,
-    )
-    data.insert(
-        list(data.columns).index('dropoff_datetime'),
-        'dropoff_date',
-        data['dropoff_datetime'].dt.date,
-    )    
+    # data.insert(
+    #     list(data.columns).index('pickup_datetime'),
+    #     'pickup_date',
+    #     data['pickup_datetime'].dt.date,
+    # )
+    # data.insert(
+    #     list(data.columns).index('dropoff_datetime'),
+    #     'dropoff_date',
+    #     data['dropoff_datetime'].dt.date,
+    # )    
 
     data['pickup_datetime'] = data['pickup_datetime'].apply(str)
-    data['pickup_date'] = data['pickup_date'].apply(str)
+    # data['pickup_date'] = data['pickup_date'].apply(str)
     data['dropoff_datetime'] = data['dropoff_datetime'].apply(str)
-    data['dropoff_date'] = data['dropoff_date'].apply(str)
+    # data['dropoff_date'] = data['dropoff_date'].apply(str)
 
     return data
 
