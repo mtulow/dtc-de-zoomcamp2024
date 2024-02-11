@@ -127,6 +127,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+dev.env
 
 # Spyder project settings
 .spyderproject
@@ -163,3 +164,20 @@ cython_debug/
 *.terraform*
 *.tfstate
 *.tfstate.*
+*.out
+plan.*
+
+# Mage AI
+/mage_data*
+personal_data.json/
+
+# data files
+mage_ai/server/data/files/**
+default_repo
+instance_metadata.json
+~/.mage_data
+pgadmin_data/
+mage_ai/frontend/package-lock.json
+
+
+mage-sa.json
